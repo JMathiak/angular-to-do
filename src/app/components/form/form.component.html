@@ -1,4 +1,10 @@
 <h1>Written by: {{name}}</h1>>
-<br><button (click)="onClick()">Submit To Do </button>
-<input [(ngModel)]="todo" type=text><br> 
-<div *ngFor="let item of toDoList; let i = index">{{item.toDo}} {{item.complete}} <button (click)="item.complete = false"> Mark Incomplete</button><button (click)="item.complete = true"> Mark Complete</button><button (click)="toDoList.splice(i, 1)">Delete</button></div>
+<input [(ngModel)]="todo"type=text> <select #t (change)="onChange(t.value)">
+    <option *ngFor="let display of addValueList" [value] = "display.value">{{display.display}}</option>
+</select><br> 
+<br><button (click)="onClick()">Submit To Do </button> 
+<button (click)="showComplete()">Show Complete Tasks</button>
+<button (click)="showIncomplete()">Show Incomplete Tasks</button>
+<button (click)="showAll()">Show All Tasks</button>
+<h1>{{displayStatus}} Items</h1>
+<div *ngFor="let item of filteredList; let i = index">{{item.toDo}} {{item.complete}} <button (click)="markIncomplete(item)"> Mark Incomplete</button><button (click)="markComplete(item)"> Mark Complete</button><button (click)="deleteItem(item)">Delete</button></div>
