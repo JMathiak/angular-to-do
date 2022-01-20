@@ -1,0 +1,4 @@
+<h1>Written by: {{name}}</h1>>
+<br><button (click)="onClick()">Submit To Do </button>
+<input [(ngModel)]="todo" type=text><br> 
+<div *ngFor="let item of toDoList; let i = index">{{item.toDo}} {{item.complete}} <button (click)="item.complete = false"> Mark Incomplete</button><button (click)="item.complete = true"> Mark Complete</button><button (click)="toDoList.splice(i, 1)">Delete</button></div>
