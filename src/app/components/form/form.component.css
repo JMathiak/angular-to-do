@@ -1,0 +1,4 @@
+::ng-deep .mat-select-content {
+  background-color: rgb(155, 1, 1);
+  font-size: 1.5em;
+}

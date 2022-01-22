@@ -1,10 +1,21 @@
 <h1>Written by: {{name}}</h1>>
-<input [(ngModel)]="todo"type=text> <select #t (change)="onChange(t.value)">
-    <option *ngFor="let display of addValueList" [value] = "display.value">{{display.display}}</option>
-</select><br> 
-<br><button (click)="onClick()">Submit To Do </button> 
+
+    <label>To Do: </label>
+        <input [(ngModel)]="todo"  type="text" >
+<br>
+<button (click)="onClick()">Submit To Do </button> <br>
 <button (click)="showComplete()">Show Complete Tasks</button>
 <button (click)="showIncomplete()">Show Incomplete Tasks</button>
-<button (click)="showAll()">Show All Tasks</button>
+<button (click)="showAll()">Show All Tasks</button><br>
+
 <h1>{{displayStatus}} Items</h1>
 <div *ngFor="let item of filteredList; let i = index">{{item.toDo}} {{item.complete}} <button (click)="markIncomplete(item)"> Mark Incomplete</button><button (click)="markComplete(item)"> Mark Complete</button><button (click)="deleteItem(item)">Delete</button></div>
+<mat-form-field appearance="fill" class='select'>
+    <label>Task View
+    </label>
+    <mat-select disableOptionCentering panelClass="myPanelClass" #t (selectionChange)="onChange(t.value)">
+        <mat-option *ngFor="let display of addValueList" [value] = "display.value">
+            {{display.display}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

@@ -18,11 +18,11 @@ export class FormComponent implements OnInit {
 
   public name = "Josh Mathiak";
   public count = 0;
-  public todo = "";
+  public todo: string = '';
   public obj = "";
   public toDoList = new Array();
   public filteredList = new Array();
-  public displayStatus = "all";
+  public displayStatus = "All";
   public addValue = false;
 
   public addValueList = [
@@ -48,20 +48,12 @@ export class FormComponent implements OnInit {
     };
     console.log(tdo)
     this.toDoList.push(tdo);
-    if(this.displayStatus === "Complete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===true)
-    }else if(this.displayStatus === "Incomplete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===false)
-    }else{
-      this.filteredList = this.toDoList
-    }
+    this.filterLists();
   }
 
   showComplete(){
     this.displayStatus = "Complete";
-    this.filteredList = this.toDoList.filter(items => items.complete==='true')
+    this.filteredList = this.toDoList.filter(items => items.complete===true)
   }
 
   
@@ -79,15 +71,7 @@ export class FormComponent implements OnInit {
     let index = this.toDoList.indexOf(ioi);
     ioi.complete = false;
     this.toDoList[index] = ioi;
-    if(this.displayStatus === "Complete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===true)
-    }else if(this.displayStatus === "Incomplete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===false)
-    }else{
-      this.filteredList = this.toDoList
-    }
+    this.filterLists();
 
   }
 
@@ -96,15 +80,7 @@ export class FormComponent implements OnInit {
     let index = this.toDoList.indexOf(ioi);
     ioi.complete = true;
     this.toDoList[index] = ioi;
-    if(this.displayStatus === "Complete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===true)
-    }else if(this.displayStatus === "Incomplete")
-    {
-      this.filteredList = this.toDoList.filter(items => items.complete===false)
-    }else{
-      this.filteredList = this.toDoList
-    }
+    this.filterLists();
 
   }
 
@@ -112,6 +88,11 @@ export class FormComponent implements OnInit {
   {
     let index = this.toDoList.indexOf(ioi);
     this.toDoList.splice(index, 1);
+    this.filterLists();
+  }
+
+  filterLists()
+  {
     if(this.displayStatus === "Complete")
     {
       this.filteredList = this.toDoList.filter(items => items.complete===true)

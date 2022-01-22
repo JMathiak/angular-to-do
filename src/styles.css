@@ -8,3 +8,22 @@ html {
     rgba(0, 212, 255, 1) 100%
   );
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.select {
+  width: 200px;
+  background-color: white;
+}
+
+.mat-select-panel {
+  background-color: red;
+  width: 1000px;
+}
