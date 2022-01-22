@@ -7,6 +7,7 @@ html {
     rgba(9, 9, 121, 1) 35%,
     rgba(0, 212, 255, 1) 100%
   );
+  color: white;
 }
 
 html,
@@ -20,15 +21,19 @@ body {
 
 .select {
   width: 200px;
-  background-color: red;
 }
 
 .mat-select-panel {
-  background-color: red;
   width: 200px;
 }
 
 .center {
   display: flex;
   justify-content: center;
+}
+
+.buttons {
+  padding: 10px;
+  display: table;
+  border-spacing: 5px;
 }

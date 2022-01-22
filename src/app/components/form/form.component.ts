@@ -1,5 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 
 interface toDoObject {
@@ -24,22 +25,32 @@ export class FormComponent implements OnInit {
   public filteredList = new Array();
   public displayStatus = "All";
   public addValue = false;
-
-  public addValueList = [
+  faPlus = faPlus;
+  public displayList =[
     {
-      display:"Incomplete",
-      value:false
+      display:"All Tasks",
+      value:"All"
+    },{
+      display:"Completed Tasks",
+      value:"Complete"
     },
     {
-      display:"Complete",
-      value:true
-    }
+      display:"Incomplete Tasks",
+      value:"Incomplete"
+    },
   ]
   onChange(selectedValue:any)
   {
     console.log(selectedValue);
     this.addValue=selectedValue;
 
+  }
+
+  onDisplayChange(sValue:any)
+  {
+    console.log(sValue);
+    this.displayStatus=sValue;
+    this.filterLists();
   }
   onClick(){
     let tdo = {
