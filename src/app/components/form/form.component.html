@@ -2,14 +2,18 @@
 
     <label>To Do: </label>
         <input [(ngModel)]="todo"  type="text" >
+        <button mat-raised-button  (click)="onClick()">Submit To Do </button> <br>
 <br>
-<button (click)="onClick()">Submit To Do </button> <br>
-<button (click)="showComplete()">Show Complete Tasks</button>
-<button (click)="showIncomplete()">Show Incomplete Tasks</button>
-<button (click)="showAll()">Show All Tasks</button><br>
+
+<button mat-raised-button (click)="showComplete()">Show Complete Tasks</button>
+<button mat-raised-button (click)="showIncomplete()">Show Incomplete Tasks</button>
+<button mat-raised-button (click)="showAll()">Show All Tasks</button><br>
 
 <h1>{{displayStatus}} Items</h1>
-<div *ngFor="let item of filteredList; let i = index">{{item.toDo}} {{item.complete}} <button (click)="markIncomplete(item)"> Mark Incomplete</button><button (click)="markComplete(item)"> Mark Complete</button><button (click)="deleteItem(item)">Delete</button></div>
+<div *ngFor="let item of filteredList; let i = index">{{item.toDo}} {{item.complete}} 
+    <button mat-raised-button  (click)="markIncomplete(item)"> Mark Incomplete</button>
+    <button mat-raised-button (click)="markComplete(item)"> Mark Complete</button>
+    <button mat-raised-button  (click)="deleteItem(item)">Delete</button></div>
 <mat-form-field appearance="fill" class='select'>
     <label>Task View
     </label>
