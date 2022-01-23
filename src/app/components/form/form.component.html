@@ -1,11 +1,17 @@
-<h1>Written by: {{name}}</h1>>
+<h1 class='title'>{{name}}'s To Do List</h1>
 <div>
-    <label>To Do: </label>
-        <input [(ngModel)]="todo"  type="text" > 
+<div class='form-container'>    
         
-        <button mat-raised-button  (click)="onClick()"><fa-icon [icon]="faPlus"></fa-icon> </button>
-
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>To Do:</mat-label>
+              <input matInput [(ngModel)]="todo"  type="text" >
+            </mat-form-field>
+        
+        
+        <button mat-raised-button class='button' (click)="onClick()"><fa-icon [icon]="faPlus"></fa-icon> </button>
+    
 <mat-form-field appearance="fill" class='select'>
+    <mat-label>View: </mat-label>
     <mat-select disableOptionCentering panelClass="myPanelClass" #s (selectionChange)="onDisplayChange(s.value)">
         <mat-option *ngFor="let display of displayList" [value] = "display.value">
             {{display.display}}
@@ -13,9 +19,15 @@
     </mat-select>
 </mat-form-field>
 
-
 </div>
-<div *ngFor="let item of filteredList; let i = index">{{item.toDo}} {{item.complete}} 
-    <button class="button" mat-raised-button  (click)="markIncomplete(item)"> Mark Incomplete</button>
-    <button mat-raised-button (click)="markComplete(item)"> Mark Complete</button>
-    <button mat-raised-button  (click)="deleteItem(item)">Delete</button></div>
+</div>
+<div *ngFor="let item of filteredList; let i = index" class='cards'><mat-card >
+    <mat-card-title>{{item.toDo}}</mat-card-title>
+    <mat-card-subtitle>{{item.status}}</mat-card-subtitle>
+    <mat-card-actions>
+        <button mat-raised-button (click)="markComplete(item)"> <fa-icon [icon]="faCheck"></fa-icon></button>
+        <button class="button" mat-raised-button  (click)="markIncomplete(item)"><fa-icon [icon]="faTimes"></fa-icon> </button>
+        <button mat-raised-button  (click)="deleteItem(item)"><fa-icon [icon]="faTrash"></fa-icon></button>
+    </mat-card-actions>
+</mat-card>
+    </div>

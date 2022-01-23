@@ -1,6 +1,6 @@
 import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 interface toDoObject {
@@ -17,7 +17,7 @@ interface toDoObject {
 
 export class FormComponent implements OnInit {
 
-  public name = "Josh Mathiak";
+  public name = "Josh ";
   public count = 0;
   public todo: string = '';
   public obj = "";
@@ -26,6 +26,9 @@ export class FormComponent implements OnInit {
   public displayStatus = "All";
   public addValue = false;
   faPlus = faPlus;
+  faTrash = faTrash;
+  faCheck = faCheck;
+  faTimes = faTimes;
   public displayList =[
     {
       display:"All Tasks",
@@ -53,12 +56,15 @@ export class FormComponent implements OnInit {
     this.filterLists();
   }
   onClick(){
+    
     let tdo = {
       toDo: this.todo,
-      complete: this.addValue
+      complete: this.addValue,
+      status: 'Incomplete'
     };
     console.log(tdo)
     this.toDoList.push(tdo);
+    this.todo = '';
     this.filterLists();
   }
 
@@ -81,6 +87,7 @@ export class FormComponent implements OnInit {
   {
     let index = this.toDoList.indexOf(ioi);
     ioi.complete = false;
+    ioi.status = 'Incomplete'
     this.toDoList[index] = ioi;
     this.filterLists();
 
@@ -90,6 +97,7 @@ export class FormComponent implements OnInit {
   {
     let index = this.toDoList.indexOf(ioi);
     ioi.complete = true;
+    ioi.status = 'Complete'
     this.toDoList[index] = ioi;
     this.filterLists();
 
