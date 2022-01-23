@@ -66,6 +66,7 @@ export class FormComponent implements OnInit {
     this.toDoList.push(tdo);
     this.todo = '';
     this.filterLists();
+    this.setData(this.toDoList);
   }
 
   showComplete(){
@@ -89,6 +90,7 @@ export class FormComponent implements OnInit {
     ioi.complete = false;
     ioi.status = 'Incomplete'
     this.toDoList[index] = ioi;
+    this.setData(this.toDoList);
     this.filterLists();
 
   }
@@ -99,6 +101,7 @@ export class FormComponent implements OnInit {
     ioi.complete = true;
     ioi.status = 'Complete'
     this.toDoList[index] = ioi;
+    this.setData(this.toDoList);
     this.filterLists();
 
   }
@@ -107,6 +110,7 @@ export class FormComponent implements OnInit {
   {
     let index = this.toDoList.indexOf(ioi);
     this.toDoList.splice(index, 1);
+    this.setData(this.toDoList);
     this.filterLists();
   }
 
@@ -122,9 +126,28 @@ export class FormComponent implements OnInit {
       this.filteredList = this.toDoList
     }
   }
+
+  setData(data:any)
+  {
+    localStorage.setItem("savedList", JSON.stringify(data));
+
+  }
+
+  getData()
+  {
+    return localStorage.getItem("savedList");
+
+  }
   constructor() { }
 
   ngOnInit(): void {
+    var storedList = this.getData();
+    if(storedList)
+    {
+      this.toDoList = JSON.parse(storedList);
+      this.filterLists();
+    }
+    
   }
 
 }

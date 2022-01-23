@@ -26,7 +26,7 @@
     <mat-card-subtitle>{{item.status}}</mat-card-subtitle>
     <mat-card-actions>
         <button mat-raised-button (click)="markComplete(item)"> <fa-icon [icon]="faCheck"></fa-icon></button>
-        <button class="button" mat-raised-button  (click)="markIncomplete(item)"><fa-icon [icon]="faTimes"></fa-icon> </button>
+        <button  mat-raised-button  (click)="markIncomplete(item)"><fa-icon [icon]="faTimes"></fa-icon> </button>
         <button mat-raised-button  (click)="deleteItem(item)"><fa-icon [icon]="faTrash"></fa-icon></button>
     </mat-card-actions>
 </mat-card>
